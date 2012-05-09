@@ -14,19 +14,22 @@
   <div class="control-group">
     <%= f.label :observed_at, :class => 'control-label' %>
     <div class="controls">
-      <%= f.datetime_select :observed_at, :class => 'datetime_select' %>
+      <%= f.datetime_select :observed_at, {}, :class => 'datetime_select input-small'%>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :weather, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :weather, :class => 'text_field' %>
+      <span class="help-inline">Enter up to 2 tags</span>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :temperature, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :temperature, :class => 'number_field' %>
+      <div class="input-append">
+        <%= f.number_field :temperature, :class => 'number_field input-small' %><span class="add-on">&deg;F</span>
+      </div>
     </div>
   </div>
 
