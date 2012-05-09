@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  ppatch: MyString
+  observed_at: 2012-05-08 22:42:47
+  weather: MyString
+  temperature: 1
+
+two:
+  name: MyString
+  ppatch: MyString
+  observed_at: 2012-05-08 22:42:47
+  weather: MyString
+  temperature: 1

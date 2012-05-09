@@ -1,0 +1,38 @@
+<%= form_for @observation, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ppatch, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :ppatch, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :observed_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :observed_at, :class => 'datetime_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :weather, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :weather, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :temperature, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :temperature, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                observations_path, :class => 'btn' %>
+  </div>
+<% end %>
