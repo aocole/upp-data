@@ -1,4 +1,5 @@
 UppData::Application.routes.draw do
+  resources :observations
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
