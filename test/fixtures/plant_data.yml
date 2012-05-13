@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  plant_type: MyString
+  number_of_fruits: 1
+  weight: 9.99
+  volume: 9.99
+  comments: MyText
+  observation_id: 1
+
+two:
+  plant_type: MyString
+  number_of_fruits: 1
+  weight: 9.99
+  volume: 9.99
+  comments: MyText
+  observation_id: 1

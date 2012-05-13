@@ -1,41 +1,60 @@
 <%= form_for @observation, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
+  <%= f.error_messages %>
+  <% control_group f.object, :name do %>
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name %>
+      <%=inline_errors f, :name%>
     </div>
-  </div>
-  <div class="control-group">
+  <%end%>
+  <% control_group f.object, :ppatch do %>
     <%= f.label :ppatch, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :ppatch, :class => 'text_field' %>
+      <%= f.select :ppatch, Ppatch.all.collect{|p| [p.name, p.id]} << ["Other - enter name", -1], :include_blank => true %>
+      <%= text_field_tag 'ppatch_name'%>
+      <%=inline_errors f, :ppatch%>
     </div>
-  </div>
-  <div class="control-group">
+  <%end%>
+  <% control_group f.object, :observed_at do %>
     <%= f.label :observed_at, :class => 'control-label' %>
     <div class="controls">
-      <%= f.datetime_select :observed_at, {}, :class => 'datetime_select input-small'%>
+      <%= f.datetime_select :observed_at, {:ampm => true}, :class => 'input-small'%>
+      <%=inline_errors f, :observed_at%>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :weather, :class => 'control-label' %>
+  <%end%>
+  <% control_group f.object, [:weather1, :weather2] do %>
+    <%= f.label "weather", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :weather, :class => 'text_field' %>
+      <%[1,2].each do |i|%>
+        <%= f.select "weather#{i}", Observation::WEATHER, {:include_blank => true}, {:class => 'input-small'} %>
+        <%=inline_errors f, "weather#{i}"%>
+      <%end%>
       <span class="help-inline">Enter up to 2 tags</span>
     </div>
-  </div>
-  <div class="control-group">
+  <%end%>
+  <% control_group f.object, :temperature do %>
     <%= f.label :temperature, :class => 'control-label' %>
     <div class="controls">
       <div class="input-append">
-        <%= f.number_field :temperature, :class => 'number_field input-small' %><span class="add-on">&deg;F</span>
+        <%= f.number_field :temperature, :class => 'input-small' %><span class="add-on">&deg;F</span>
       </div>
+      <%=inline_errors f, :temperature%>
     </div>
-  </div>
+  <%end%>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                observations_path, :class => 'btn' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), observations_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $('#observation_ppatch').change(function(){
+      if ($(this).val() == '-1') {
+          $('#ppatch_name').attr('disabled', false).show().focus();
+      } else {
+          $('#ppatch_name').attr('disabled', true).hide();
+      }
+  });
+  $('#observation_ppatch').change();
+</script>

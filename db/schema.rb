@@ -11,16 +11,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509054247) do
+ActiveRecord::Schema.define(:version => 20120513225123) do
 
   create_table "observations", :force => true do |t|
     t.string   "name"
-    t.string   "ppatch"
     t.datetime "observed_at"
-    t.string   "weather"
+    t.string   "weather1"
     t.integer  "temperature"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "weather2"
+    t.integer  "ppatch_id"
+  end
+
+  create_table "plant_data", :force => true do |t|
+    t.string   "plant_type"
+    t.integer  "number_of_fruits"
+    t.decimal  "weight"
+    t.decimal  "volume"
+    t.text     "comments"
+    t.integer  "observation_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "pollinator_data", :force => true do |t|
+    t.string   "pollinator_type"
+    t.integer  "number_of_pollinators"
+    t.string   "species"
+    t.text     "comments"
+    t.integer  "observation_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "ppatches", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

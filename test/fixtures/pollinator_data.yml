@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pollinator_type: MyString
+  number_of_pollinators: 1
+  species: MyString
+  comments: MyText
+  observation_id: 1
+
+two:
+  pollinator_type: MyString
+  number_of_pollinators: 1
+  species: MyString
+  comments: MyText
+  observation_id: 1
