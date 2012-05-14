@@ -1,0 +1,44 @@
+<%- model_class = PlantDatum.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:plant_type) %></th>
+      <th><%= model_class.human_attribute_name(:number_of_fruits) %></th>
+      <th><%= model_class.human_attribute_name(:weight) %></th>
+      <th><%= model_class.human_attribute_name(:volume) %></th>
+      <th><%= model_class.human_attribute_name(:comments) %></th>
+      <th><%= model_class.human_attribute_name(:observation_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plant_data.each do |plant_datum| %>
+      <tr>
+        <td><%= link_to plant_datum.id, plant_datum_path(plant_datum) %></td>
+        <td><%= plant_datum.plant_type %></td>
+        <td><%= plant_datum.number_of_fruits %></td>
+        <td><%= plant_datum.weight %></td>
+        <td><%= plant_datum.volume %></td>
+        <td><%= plant_datum.comments %></td>
+        <td><%= plant_datum.observation_id %></td>
+        <td><%=l plant_datum.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_plant_datum_path(plant_datum), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      plant_datum_path(plant_datum),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_plant_datum_path,
+            :class => 'btn btn-primary' %>

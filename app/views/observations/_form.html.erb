@@ -1,5 +1,4 @@
 <%= form_for @observation, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.error_messages %>
   <% control_group f.object, :name do %>
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
@@ -43,7 +42,7 @@
   <%end%>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit 'Save and enter plant data', :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")), observations_path, :class => 'btn' %>
   </div>
 <% end %>

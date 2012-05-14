@@ -7,6 +7,6 @@ class Observation < ActiveRecord::Base
 
   validates_presence_of :name, :observed_at, :ppatch, :temperature
   validates_numericality_of :temperature
-  validates_inclusion_of :weather1, :in => WEATHER
-  validates_inclusion_of :weather2, :in => WEATHER
+  validates_inclusion_of :weather1, :in => WEATHER, :allow_nil => true
+  validates_inclusion_of :weather2, :in => WEATHER, :allow_nil => true
 end

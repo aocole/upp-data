@@ -3,6 +3,9 @@
 
 en:
   activerecord:
+    models:
+      plant_datum: Plant Observation
+      pollinator_datum: Pollinator Observation
     attributes:
       observation:
         name: Your name

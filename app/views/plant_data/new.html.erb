@@ -1,0 +1,15 @@
+<%- model_class = @plant_datum.class -%>
+<h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
+                               :default => "New #{model_class.model_name.human}") %></h1>
+<h2>for the batch of tomato fruits you picked <strong><%=@observation.observed_at.to_s :long%></strong></h2>
+<% unless @observation.plant_data.blank? %>
+  <div class="well">
+    <h4>Plants you've already entered for this observation:</h4>
+    <ul>
+      <%@observation.plant_data.each do |datum|%>
+        <li><strong><%=datum.plant_type%></strong> - <%=datum.number_of_fruits%> fruits</li>
+      <%end%>
+    </ul>
+  </div>
+<%end%>
+<%= render :partial => 'form' %>

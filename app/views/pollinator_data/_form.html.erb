@@ -1,0 +1,43 @@
+<%= form_for @pollinator_datum, :url => observation_pollinator_data_path(params[:observation_id]), :html => { :class => 'form-horizontal' } do |f| %>
+  <% control_group f.object, :pollinator_type do %>
+    <%= f.label :pollinator_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :pollinator_type, PollinatorDatum::TYPE, :include_blank => true %>
+      <%=inline_errors f, :pollinator_type%>
+    </div>
+  <%end%>
+
+  <%control_group f.object, :number_of_pollinators do%>
+    <%= f.label :number_of_pollinators, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :number_of_pollinators, :class => 'number_field' %>
+      <span class="help-inline">Number of this type that you observed</span>
+      <%=inline_errors f, :number_of_pollinators%>
+    </div>
+  <% end %>
+  <%control_group f.object,:species  do%>
+    <%= f.label :species, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :species, :class => 'text_field' %>
+      <span class="help-inline">May be left blank.</span>
+      <%=inline_errors f, :species%>
+      <p class="help-block">
+        Enter the species name if you know it.
+      </p>
+    </div>
+  <% end %>
+  <% control_group f.object, :comments do %>
+    <%= f.label :comments, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :comments, :class => 'input-xlarge', :rows => 4 %>
+      <%=inline_errors f, :comments%>
+      <p class="help-block">Any other comments about this pollinator observation</p>
+    </div>
+  <%end%>
+
+  <div class="form-actions">
+    <%= f.submit "Save and enter another pollinator", :class => 'btn btn-primary' %>
+    <%= f.submit "Save and done entering pollinators", :class => 'btn btn-primary' %>
+    <%= link_to 'Finish data entry without saving this page', new_observation_pollinator_datum_path(@observation), :class => 'btn btn-small' %>
+  </div>
+<% end %>

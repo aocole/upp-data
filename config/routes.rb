@@ -1,5 +1,7 @@
 UppData::Application.routes.draw do
-  resources :observations
+  resources :observations do
+    resources :plant_data, :pollinator_data
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

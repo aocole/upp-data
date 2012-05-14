@@ -33,12 +33,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">UppData</a>
+          <a class="brand" href="#">Urban Pollination Project Data</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><%= link_to "Enter Observation Data", new_observation_path  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -47,16 +45,34 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
+        <% if @observation %>
+          <div class="span3">
+            <div class="well sidebar-nav">
+              <ul class="nav nav-list">
+                <li class="nav-header">Observation</li>
+                <li><%= link_to_unless_current "Step 1: Basic Info", edit_observation_path(@observation) %></li>
+                <li>
+                  Step 2: Plant Data
+                  <ul>
+                    <%@observation.plant_data.each do |datum|%>
+                      <li><strong><%=datum.plant_type%></strong> - <%=datum.number_of_fruits%> fruits</li>
+                    <%end%>
+                    <li><%=link_to "Add another", new_observation_plant_datum_path(@observation)%></li>
+                  </ul>
+                </li>
+                <li>
+                  Step 3: Pollinator Data
+                  <ul>
+                    <%@observation.pollinator_data.each do |datum|%>
+                      <li><strong><%=datum.pollinator_type%></strong> - <%=datum.number_of_pollinators%> pollinators</li>
+                    <%end%>
+                    <li><%=link_to "Add another", new_observation_pollinator_datum_path(@observation)%></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!--/.well -->
+          </div><!--/span-->
+        <%end%>
         <div class="span9">
           <%if flash[:notice] || flash[:error]%>
             <%if flash[:notice] %>
@@ -75,7 +91,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p></p>
       </footer>
 
     </div> <!-- /container -->

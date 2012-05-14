@@ -1,0 +1,42 @@
+<%- model_class = PollinatorDatum.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:pollinator_type) %></th>
+      <th><%= model_class.human_attribute_name(:number_of_pollinators) %></th>
+      <th><%= model_class.human_attribute_name(:species) %></th>
+      <th><%= model_class.human_attribute_name(:comments) %></th>
+      <th><%= model_class.human_attribute_name(:observation_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pollinator_data.each do |pollinator_datum| %>
+      <tr>
+        <td><%= link_to pollinator_datum.id, pollinator_datum_path(pollinator_datum) %></td>
+        <td><%= pollinator_datum.pollinator_type %></td>
+        <td><%= pollinator_datum.number_of_pollinators %></td>
+        <td><%= pollinator_datum.species %></td>
+        <td><%= pollinator_datum.comments %></td>
+        <td><%= pollinator_datum.observation_id %></td>
+        <td><%=l pollinator_datum.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_pollinator_datum_path(pollinator_datum), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      pollinator_datum_path(pollinator_datum),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_pollinator_datum_path,
+            :class => 'btn btn-primary' %>
