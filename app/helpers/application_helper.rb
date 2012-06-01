@@ -2,9 +2,9 @@ module ApplicationHelper
   def control_group(object, fields, &block)
     fields = [fields].flatten
     content = capture(&block)
-    concat(%Q{<div class="control-group#{if object.respond_to?(:errors) && fields.any?{|field|object.errors[field].any?} then ' error' else '' end}">}.html_safe)
-    concat(content)
-    concat("</div>".html_safe)
+    string = %Q{<div class="control-group#{if object.respond_to?(:errors) && fields.any?{|field|object.errors[field].any?} then ' error' else '' end}">}.html_safe
+    string << content
+    string << "</div>".html_safe
   end
 
   def inline_errors(form_builder, field)

@@ -1,12 +1,12 @@
 <%= form_for @observation, :html => { :class => 'form-horizontal' } do |f| %>
-  <% control_group f.object, :name do %>
+  <%= control_group f.object, :name do %>
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name %>
       <%=inline_errors f, :name%>
     </div>
   <%end%>
-  <% control_group f.object, :ppatch do %>
+  <%= control_group f.object, :ppatch do %>
     <%= f.label :ppatch, :class => 'control-label' %>
     <div class="controls">
       <%= f.select :ppatch, Ppatch.all.collect{|p| [p.name, p.id]} << ["Other - enter name", -1], :include_blank => true %>
@@ -14,14 +14,14 @@
       <%=inline_errors f, :ppatch%>
     </div>
   <%end%>
-  <% control_group f.object, :observed_at do %>
+  <%= control_group f.object, :observed_at do %>
     <%= f.label :observed_at, :class => 'control-label' %>
     <div class="controls">
       <%= f.datetime_select :observed_at, {:ampm => true}, :class => 'input-small'%>
       <%=inline_errors f, :observed_at%>
     </div>
   <%end%>
-  <% control_group f.object, [:weather1, :weather2] do %>
+  <%= control_group f.object, [:weather1, :weather2] do %>
     <%= f.label "weather", :class => 'control-label' %>
     <div class="controls">
       <%[1,2].each do |i|%>
@@ -31,7 +31,7 @@
       <span class="help-inline">Enter up to 2 tags</span>
     </div>
   <%end%>
-  <% control_group f.object, :temperature do %>
+  <%= control_group f.object, :temperature do %>
     <%= f.label :temperature, :class => 'control-label' %>
     <div class="controls">
       <div class="input-append">
@@ -43,7 +43,7 @@
 
   <div class="form-actions">
     <%= f.submit 'Save and enter plant data', :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), observations_path, :class => 'btn' %>
+    <%= link_to 'Cancel', observations_path, :class => 'btn' %>
   </div>
 <% end %>
 

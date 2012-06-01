@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -18,22 +17,26 @@ ActiveRecord::Schema.define(:version => 20120513225123) do
     t.datetime "observed_at"
     t.string   "weather1"
     t.integer  "temperature"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "weather2"
     t.integer  "ppatch_id"
   end
 
+  add_index "observations", ["ppatch_id"], :name => "observations_ppatch_id_fk"
+
   create_table "plant_data", :force => true do |t|
     t.string   "plant_type"
     t.integer  "number_of_fruits"
-    t.decimal  "weight"
-    t.decimal  "volume"
+    t.decimal  "weight",           :precision => 10, :scale => 0
+    t.decimal  "volume",           :precision => 10, :scale => 0
     t.text     "comments"
     t.integer  "observation_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "plant_data", ["observation_id"], :name => "plant_data_observation_id_fk"
 
   create_table "pollinator_data", :force => true do |t|
     t.string   "pollinator_type"
@@ -41,14 +44,22 @@ ActiveRecord::Schema.define(:version => 20120513225123) do
     t.string   "species"
     t.text     "comments"
     t.integer  "observation_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "pollinator_data", ["observation_id"], :name => "pollinator_data_observation_id_fk"
 
   create_table "ppatches", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_foreign_key "observations", "ppatches", :name => "observations_ppatch_id_fk"
+
+  add_foreign_key "plant_data", "observations", :name => "plant_data_observation_id_fk", :dependent => :delete
+
+  add_foreign_key "pollinator_data", "observations", :name => "pollinator_data_observation_id_fk", :dependent => :delete
 
 end

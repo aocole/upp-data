@@ -1,5 +1,5 @@
 class CreatePollinatorData < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :pollinator_data do |t|
       t.string :pollinator_type
       t.integer :number_of_pollinators

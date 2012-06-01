@@ -2,6 +2,9 @@ UppData::Application.routes.draw do
   resources :observations do
     resources :plant_data, :pollinator_data
   end
+
+  match "thanks" => 'observations#thanks'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

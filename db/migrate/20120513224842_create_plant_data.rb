@@ -1,5 +1,5 @@
 class CreatePlantData < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :plant_data do |t|
       t.string :plant_type
       t.integer :number_of_fruits

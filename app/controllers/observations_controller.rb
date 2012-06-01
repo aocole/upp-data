@@ -10,14 +10,21 @@ class ObservationsController < ApplicationController
   end
 
   def create
+    new
+    update
+  end
+
+  def edit
+    @observation = Observation.find_by_id params[:id]
+  end
+
+  def update
     Observation.transaction do
-      new
       %w{name weather1 weather2 temperature}.each do |field|
         @observation[field] = params[:observation][field] unless params[:observation][field].blank?
       end
 
-      observed_at_params = params[:observation].select{|k,v| k =~ /observed_at/}
-      @observation.attributes = observed_at_params
+      @observation.observed_at = convert_date(params[:observation], 'observed_at')
 
       ppatch = if !params[:ppatch_name].blank?
         p = Ppatch.find_by_name params[:ppatch_name]
@@ -37,6 +44,10 @@ class ObservationsController < ApplicationController
         render :new
       end
     end
+  end
+
+  def thanks
+    
   end
 
 end

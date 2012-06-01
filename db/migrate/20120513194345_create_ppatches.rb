@@ -1,5 +1,5 @@
 class CreatePpatches < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :ppatches do |t|
       t.string :name
 
