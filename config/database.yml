@@ -6,7 +6,7 @@
 development:
   adapter: mysql2
   database: upp_data_dev
-  user: root
+  username: root
   pool: 5
   timeout: 5000
 
@@ -16,7 +16,7 @@ development:
 test:
   adapter: mysql2
   database: upp_data_test
-  user: root
+  username: root
   pool: 5
   timeout: 5000
 
@@ -24,7 +24,7 @@ production:
   adapter: mysql2
   host: mysql.nwpollination.org
   database: upp_data
-  user: upp_data
+  username: upp_data
   password: upp_data_patrol
   pool: 5
   timeout: 5000
