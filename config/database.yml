@@ -23,6 +23,8 @@ test:
 production:
   adapter: mysql2
   database: upp_data
-  user: root
+  user: upp_data
+  password: upp_data_patrol
+  host: mysql.nwpollination.org
   pool: 5
   timeout: 5000
