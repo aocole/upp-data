@@ -8,6 +8,7 @@ role :db,  application, :primary => true # This is where Rails migrations will r
 set :repository,  "git@github.com:aocole/upp-data.git"
 
 set :scm, :git
+set :scm_verbose, true
 set :use_sudo, false
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
