@@ -1,7 +1,7 @@
 <%- model_class = @pollinator_datum.class -%>
 <h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
                                :default => "New #{model_class.model_name.human}") %></h1>
-<h3>for the batch of tomato fruits you picked <strong><%=@observation.observed_at.to_s :long%></strong></h3>
+<h3>for the period beginning <strong><%=@observation.observed_at.to_s :long%></strong></h3>
 <% unless @observation.pollinator_data.blank? %>
   <div class="well">
     <h4>Pollinators you've already entered for this observation:</h4>
