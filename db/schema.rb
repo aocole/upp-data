@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513225123) do
+ActiveRecord::Schema.define(:version => 20120704045112) do
 
   create_table "observations", :force => true do |t|
     t.string   "name"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20120513225123) do
   create_table "plant_data", :force => true do |t|
     t.string   "plant_type"
     t.integer  "number_of_fruits"
-    t.decimal  "weight",           :precision => 10, :scale => 0
     t.decimal  "volume",           :precision => 10, :scale => 0
     t.text     "comments"
     t.integer  "observation_id"

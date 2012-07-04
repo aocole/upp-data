@@ -17,7 +17,7 @@ class PollinatorDataController < ApplicationController
         redirect_to new_observation_pollinator_datum_path(@observation)
       end
     else
-      flash.now[:error] = "Bummer! There was an problem with your plant data."
+      flash.now[:error] = "Bummer! There was an problem with your pollinator data."
       render :new
     end
 

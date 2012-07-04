@@ -1,10 +1,11 @@
 module ApplicationHelper
-  def control_group(object, fields, &block)
+  def control_group(object, fields, options={}, &block)
     fields = [fields].flatten
-    content = capture(&block)
-    string = %Q{<div class="control-group#{if object.respond_to?(:errors) && fields.any?{|field|object.errors[field].any?} then ' error' else '' end}">}.html_safe
-    string << content
-    string << "</div>".html_safe
+    default_options = {
+      :class => "control-group#{if object.respond_to?(:errors) && fields.any?{|field|object.errors[field].any?} then ' error' else '' end} #{options.delete(:class)}"
+    }
+    options = options.merge(default_options)
+    content_tag(:div, options, &block)
   end
 
   def inline_errors(form_builder, field)

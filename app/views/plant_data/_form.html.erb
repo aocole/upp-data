@@ -15,18 +15,7 @@
       <%=inline_errors f, :number_of_fruits%>
     </div>
   <%end%>
-
-  <% control_group f.object, :weight do %>
-    <%= f.label :weight, :class => 'control-label' %>
-    <div class="controls">
-      <div class="input-append">
-        <%= f.text_field :weight, {:class => 'input-small'} %><span class="add-on">g</span>
-        <span class="help-inline">Total weight of all fruits that you picked</span>
-        <%=inline_errors f, :weight%>
-      </div>
-    </div>
-  <%end%>
-
+  
   <% control_group f.object, :volume do %>
     <%= f.label :volume, :class => 'control-label' %>
     <div class="controls">
