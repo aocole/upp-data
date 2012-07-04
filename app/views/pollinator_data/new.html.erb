@@ -2,6 +2,16 @@
 <h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
                                :default => "New #{model_class.model_name.human}") %></h1>
 <h3>for the period beginning <strong><%=@observation.observed_at.to_s :long%></strong></h3>
+
+<div class="row-fluid">
+  <div class="span6">
+    <p>
+      <span class="label label-warning">Heads up!</span> All pollinator data entered in this Observation should be for the same plant. If you 
+      have data to enter for other plants, please start a new Observation. Thanks!
+    </p>
+  </div>
+</div>
+
 <% unless @observation.pollinator_data.blank? %>
   <div class="well">
     <h4>Pollinators you've already entered for this observation:</h4>
