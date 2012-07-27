@@ -7,7 +7,7 @@
     <h4>Plants you've already entered for this observation:</h4>
     <ul>
       <%@observation.plant_data.each do |datum|%>
-        <li><strong><%=datum.plant_type%></strong> - <%=datum.number_of_fruits%> fruits</li>
+        <li><strong><%=datum.plant_type%></strong> - <%=datum.total_number_of_fruits%> fruits</li>
       <%end%>
     </ul>
   </div>

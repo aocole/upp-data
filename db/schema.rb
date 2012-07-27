@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120704045112) do
+ActiveRecord::Schema.define(:version => 20120727215524) do
 
   create_table "observations", :force => true do |t|
     t.string   "name"
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(:version => 20120704045112) do
 
   create_table "plant_data", :force => true do |t|
     t.string   "plant_type"
-    t.integer  "number_of_fruits"
-    t.decimal  "volume",           :precision => 10, :scale => 0
+    t.integer  "total_number_of_fruits"
+    t.decimal  "volume",                    :precision => 10, :scale => 0
     t.text     "comments"
     t.integer  "observation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number_of_fruits_measured"
   end
 
   add_index "plant_data", ["observation_id"], :name => "plant_data_observation_id_fk"

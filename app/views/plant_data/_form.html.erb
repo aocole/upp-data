@@ -7,21 +7,50 @@
     </div>
   <%end%>
 
-  <% control_group f.object, :number_of_fruits do %>
-    <%= f.label :number_of_fruits, :class => 'control-label' %>
+  <% control_group f.object, :total_number_of_fruits do %>
+    <%= f.label :total_number_of_fruits, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :number_of_fruits, {:class => 'input-small'} %>
-      <span class="help-inline">Number of fruits that you picked</span>
-      <%=inline_errors f, :number_of_fruits%>
+      <%= f.number_field :total_number_of_fruits, {:class => 'input-small'} %>
+      <span class="help-inline">Total number of tomatoes harvested</span>
+      <%=inline_errors f, :total_number_of_fruits%>
     </div>
   <%end%>
   
+  <% control_group f.object, :number_of_fruits_measured do %>
+    <%= f.label :number_of_fruits_measured, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :number_of_fruits_measured, {:class => 'input-small'} %>
+      <span class="help-inline">Number of tomatoes placed in measuring bottle</span>
+      <%=inline_errors f, :number_of_fruits_measured%>
+    </div>
+  <%end%>
+  
+  <% control_group f.object, :water_volume_with_tomatoes do %>
+    <%= f.label :water_volume_with_tomatoes, :class => 'control-label' %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.number_field :water_volume_with_tomatoes, {:class => 'input-small'} %><span class="add-on">mL</span>
+        <span class="help-inline">A. Volume of water <strong>WITH</strong> tomatoes in it</span>
+      </div>
+    </div>
+  <%end%>
+
+  <% control_group f.object, :water_volume_without_tomatoes do %>
+    <%= f.label :water_volume_without_tomatoes, :class => 'control-label' %>
+    <div class="controls">
+      <div class="input-append">
+        <%= f.number_field :water_volume_without_tomatoes, {:class => 'input-small'} %><span class="add-on">mL</span>
+        <span class="help-inline">B. Volume of water <strong>WITHOUT</strong> tomatoes in it</span>
+      </div>
+    </div>
+  <%end%>
+
   <% control_group f.object, :volume do %>
     <%= f.label :volume, :class => 'control-label' %>
     <div class="controls">
       <div class="input-append">
-        <%= f.text_field :volume, {:class => 'input-small'} %><span class="add-on">mL</span>
-        <span class="help-inline">Total volume of all fruits that you picked</span>
+        <%= f.number_field :volume, {:class => 'input-small'} %><span class="add-on">mL</span>
+        <span class="help-inline">Volume of tomatoes measured (A-B)</span>
         <%=inline_errors f, :volume%>
       </div>
     </div>
@@ -42,3 +71,14 @@
     <%= link_to 'Go to pollinator entry without saving this page', new_observation_pollinator_datum_path(@observation), :class => 'btn btn-small' %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+$(function(){
+  $('#plant_datum_water_volume_with_tomatoes, #plant_datum_water_volume_without_tomatoes').change(function(){
+      var water_with = Number($('#plant_datum_water_volume_with_tomatoes').val());
+      var water_without = Number($('#plant_datum_water_volume_without_tomatoes').val());
+      var volume = water_with - water_without;
+      $('#plant_datum_volume').val(volume);
+  });
+});
+</script>

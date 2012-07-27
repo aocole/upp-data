@@ -65,7 +65,7 @@
                   Step 2: Plant Data
                   <ul>
                     <%@observation.plant_data.each do |datum|%>
-                      <li><strong><%=datum.plant_type%></strong> - <%=datum.number_of_fruits%> fruits</li>
+                      <li><strong><%=datum.plant_type%></strong> - <%=datum.total_number_of_fruits%> fruits</li>
                     <%end%>
                     <li><%=link_to "Add another", new_observation_plant_datum_path(@observation)%></li>
                   </ul>
