@@ -79,6 +79,11 @@
                     <li><%=link_to "Add another", new_observation_pollinator_datum_path(@observation)%></li>
                   </ul>
                 </li>
+                <% if (@observation.plant_data.size + @observation.pollinator_data.size) > 0 %>
+                  <li>
+                    <%= link_to 'Finish data entry without saving this page', thanks_path, :class => 'btn btn-small' %>
+                  </li>
+                <% end %>
               </ul>
             </div><!--/.well -->
           </div><!--/span-->

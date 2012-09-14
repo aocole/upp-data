@@ -41,6 +41,7 @@ GEM
       abstract (>= 1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    fastercsv (1.5.5)
     foreigner (1.1.6)
       activerecord (>= 3.0.0)
     highline (1.6.12)
@@ -102,6 +103,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   dynamic_form
+  fastercsv
   foreigner
   jquery-rails
   json

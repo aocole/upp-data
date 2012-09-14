@@ -1,5 +1,6 @@
 <%- model_class = Observation.new.class -%>
 <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<%= link_to "Download CSV", observations_path+'.csv' %>         
 <table class="table table-striped">
   <thead>
     <tr>
