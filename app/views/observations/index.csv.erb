@@ -1,0 +1,49 @@
+ObservationID,Name,PPatch,ObservedAt,Weather1,Weather2,TemperatureF,CreatedAt,PlantType,TotalFruits,MeasuredFruits,VolumemL,PlantComments,PollinatorType,NumPollinators,Species,PollinatorComments
+<%= FasterCSV.generate do |csv|
+  @observations.each do |observation|
+    observation.plant_data.each do |plant_datum|
+      csv << [
+        observation.id,
+        observation.name, 
+        observation.ppatch ? observation.ppatch.name : 'nil!',
+        observation.observed_at,
+        observation.weather1,
+        observation.weather2,
+        observation.temperature,
+        observation.created_at,
+        plant_datum.plant_type,
+        plant_datum.total_number_of_fruits,
+        plant_datum.number_of_fruits_measured,
+        plant_datum.volume,
+        plant_datum.comments,
+        nil,
+        nil,
+        nil,
+        nil
+      ]
+    end
+  end
+  @observations.each do |observation|
+    observation.pollinator_data.each do |pollinator_datum|
+      csv << [
+        observation.id,
+        observation.name, 
+        observation.ppatch ? observation.ppatch.name : 'nil!',
+        observation.observed_at,
+        observation.weather1,
+        observation.weather2,
+        observation.temperature,
+        observation.created_at,
+        nil,
+        nil,
+        nil,
+        nil,
+        nil,
+        pollinator_datum.pollinator_type,
+        pollinator_datum.number_of_pollinators,
+        pollinator_datum.species,
+        pollinator_datum.comments,
+      ]
+    end
+  end
+end.html_safe %>
