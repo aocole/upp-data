@@ -22,7 +22,7 @@ test:
 
 production:
   adapter: mysql2
-  host: mysql.nwpollination.org
+  host: 69.163.208.50
   database: upp_data
   username: upp_data
   password: upp_data_patrol
