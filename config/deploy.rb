@@ -36,5 +36,9 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+  task :config_symlink do
+    run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "cp #{shared_path}/config/secret_token.rb #{release_path}/config/initializers/secret_token.rb"
+  end
 end
 
