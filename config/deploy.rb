@@ -30,6 +30,7 @@ set :deploy_via, :remote_cache
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
+after "deploy:update_code","deploy:config_symlink"
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
