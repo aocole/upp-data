@@ -9,7 +9,7 @@
   <%= control_group f.object, :ppatch do %>
     <%= f.label :ppatch, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :ppatch, Ppatch.all.collect{|p| [p.name, p.id]} << ["Other - enter name", -1], :include_blank => true %>
+      <%= f.select :ppatch, Ppatch.all.collect{|p| [p.name.titlecase, p.id]}.sort{|a,b| a[0] <=> b[0]} << ["Other - enter name", -1], :include_blank => true %>
       <%= text_field_tag 'ppatch_name'%>
       <%=inline_errors f, :ppatch%>
     </div>
